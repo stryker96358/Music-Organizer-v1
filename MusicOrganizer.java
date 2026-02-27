@@ -37,6 +37,16 @@ public class MusicOrganizer
         return files.size();
     }
     
+    public void checkIndex(int index) {
+        if (index < 0 || index > files.size()) {
+            System.out.println("The valid range is " + files.size());
+        }
+    }
+    
+    public boolean validIndex(int index) {
+        return index >= 0 && index < files.size();
+    }
+    
     /**
      * List a file from the collection.
      * @param index The index of the file to be listed.
