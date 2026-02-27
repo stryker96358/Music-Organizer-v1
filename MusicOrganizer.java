@@ -10,13 +10,15 @@ public class MusicOrganizer
 {
     // An ArrayList for storing the file names of music files.
     private ArrayList<String> files;
-        
+    
+    
     /**
      * Create a MusicOrganizer
      */
     public MusicOrganizer()
     {
         files = new ArrayList<>();
+
     }
     
     /**
@@ -38,7 +40,7 @@ public class MusicOrganizer
     }
     
     public void checkIndex(int index) {
-        if (index < 0 || index > files.size()) {
+        if (index < 0 && index > files.size()) {
             System.out.println("The valid range is " + files.size());
         }
     }
@@ -53,19 +55,38 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
     }
     
+    public void listAllFiles() {
+        int pos;
+        String filename;
+        for (int index = 0; index < files.size(); index++) {
+            pos = index + 1;
+            filename = files.get(index);
+            System.out.println(pos + ": " + filename);
+        }
+    }
+    
+    public void listWithIndex() {
+        String filename;
+        for (int index = 0; index < files.size(); index++) {
+            filename = files.get(index);
+            System.out.println(index + ": " + filename);
+        }
+    }
+    
+    
+    
     /**
      * Remove a file from the collection.
      * @param index The index of the file to be removed.
      */
-    public void removeFile(int index)
-    {
-        if(index >= 0 && index < files.size()) {
+    public void removeFile(int index) {
+        if(validIndex (index)) {
             files.remove(index);
         }
     }
